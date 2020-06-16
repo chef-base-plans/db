@@ -1,1 +1,2 @@
-command_relative_path: '/bin/db_dump'
+plan_name: 'db'
+command_relative_path: 'bin/db_dump'
