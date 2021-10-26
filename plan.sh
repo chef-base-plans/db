@@ -1,6 +1,6 @@
 pkg_name=db
 pkg_origin=core
-pkg_version=5.3.28
+pkg_version=18.1.40
 pkg_maintainer="The Habitat Maintainers <humans@habitat.sh>"
 pkg_description="\
 Berkeley DB is a family of embedded key-value database libraries providing \
@@ -11,7 +11,7 @@ pkg_license=('custom')
 # Oracle's official download link for Berkeley DB is now behind a login screen
 # Pull from LFS mirrors for now
 pkg_source="https://download.oracle.com/berkeley-db/${pkg_name}-${pkg_version}.tar.gz"
-pkg_shasum="e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628"
+pkg_shasum="0cecb2ef0c67b166de93732769abdeba0555086d51de1090df325e18ee8da9c8"
 pkg_deps=(
   core/glibc
   core/gcc-libs
@@ -28,9 +28,8 @@ pkg_include_dirs=(include)
 pkg_lib_dirs=(lib)
 
 do_prepare() {
-  # Many thanks to Arch Linux
-  # https://git.archlinux.org/svntogit/packages.git/plain/trunk/atomic.patch?h=packages/db
-  patch -p0 < $PLAN_CONTEXT/patches/atomic.patch
+  mkdir "$HAB_CACHE_SRC_PATH/$pkg_dirname/docs/bdb-sql"
+  mkdir "$HAB_CACHE_SRC_PATH/$pkg_dirname/docs/gsg_db_server"
 }
 
 do_build() {
